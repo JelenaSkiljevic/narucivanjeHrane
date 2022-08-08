@@ -1,4 +1,9 @@
 <?php
+
+//Zapocinjanje sesije: Start Session
+session_start();
+
+define('SITEURL', 'http://localhost/narucivanjehrane/'); //izmeniti adresu kada bude bio gotov rad
 define('LOCALHOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
