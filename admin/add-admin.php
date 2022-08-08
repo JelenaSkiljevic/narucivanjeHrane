@@ -5,6 +5,12 @@
     <div class="wrapper">
         <h1>Dodavanje Admina</h1>
         <br><br>
+        <?php
+            if(isset($_SESSION['add'])){ //Proveravamo da li je session set
+                echo $_SESSION['add']; //Prikazujemo poruku sesije
+                unset($_SESSION['add']); //Uklanjamo poruku sesije
+            }
+        ?>
         <form action="" method="POST">
             <table class="tbl-30">
                 <tr>
@@ -47,12 +53,26 @@ if (isset($_POST['submit'])) { //ovo proverava da li je dugme pritisnuto
         username = '$korisnicko_ime',
         password = '$lozinka'";
     
-    //3--Izvrsavanje SQL upita
-    
-    
+    //3--Izvrsavanje SQL upita i cuvanje podataka
     $res = mysqli_query($conn, $sql) or die(mysqli_query()); 
     //sadrzace T/F da li je uspesno. Ako ne uspe prekinuce ovim die
 
+    //4--Provera da li je uspesno sacuvano
+    if($res==TRUE){
+        //USPESNO
+        //Radicemo sa SESIJOM
+        //Kreiramo sesion variablu
+        $_SESSION['add'] = "Novi admin je uspesno dodat";
+        //Redirect page: Hocemo d nas vrati na ovu stranicu
+        header("location:".SITEURL.'admin/manage-admin.php');
+    }else{
+        //FAIL
+        $_SESSION['add'] = "Greska prilikom dodavanja novog administratora";
+        //Redirect page: Hocemo d nas vrati na ovu stranicu
+        header("location:".SITEURL.'admin/add-admin.php');
+        
+
+    }
     
 }
 

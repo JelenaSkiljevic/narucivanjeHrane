@@ -7,6 +7,14 @@
         <div class="wrapper">
             <h1>Manage Amin</h1>
             <!-- Dugme za dodavanje admina -->
+            <br />
+            <?php //mi smo kao dodali u add admin vrednsot toj sesiji u zavisnosti od njene uspesnosti.
+            //a on ovde proverava da li je sesija setovana i ispisuje njenu vrednost ako jeste
+                if(isset($_SESSION['add'])){
+                    echo $_SESSION['add']; //Prikazujemo poruku sesije
+                    unset($_SESSION['add']); //Sklanjamo poruku sesije kada se refreshuje
+                }
+            ?>
             <br /><br />
             <a href="add-admin.php" class="btn-primary">Dodaj Admina</a>
             <br /><br /><br />
