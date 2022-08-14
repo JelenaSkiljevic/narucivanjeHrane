@@ -62,12 +62,12 @@ if (isset($_POST['submit'])) { //ovo proverava da li je dugme pritisnuto
         //USPESNO
         //Radicemo sa SESIJOM
         //Kreiramo sesion variablu
-        $_SESSION['add'] = "Novi admin je uspesno dodat";
+        $_SESSION['add'] = "<div class = 'success'>Novi admin je uspesno dodat</div>";
         //Redirect page: Hocemo d nas vrati na ovu stranicu
         header("location:".SITEURL.'admin/manage-admin.php');
     }else{
         //FAIL
-        $_SESSION['add'] = "Greska prilikom dodavanja novog administratora";
+        $_SESSION['add'] = "<div class = 'error'>Greska prilikom dodavanja novog administratora</div>";
         //Redirect page: Hocemo d nas vrati na ovu stranicu
         header("location:".SITEURL.'admin/add-admin.php');
         
